@@ -1,0 +1,50 @@
+
+header {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #4c3e3e;
+    max-width: 1000px;
+    font-style: italic;
+}
+
+.napit1 {
+    background-color: #bcb5b56c;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #4c3e3e;
+    max-width: 400px;
+    font-style: italic;
+}
+
+.napit2 {
+    background-color: #bcb5b56c;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #4c3e3e;
+    max-width: 400px;
+    font-style: italic;
+}
+
+.uusiPeli {
+    background-color: #bcb5b56c;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #4c3e3e;
+    max-width: 400px;
+}
+
+.tulokset {
+    gap: 10px;
+    background-color: #bcb5b56c;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #4c3e3e;
+    max-width: 400px;
+    text-align: center;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="ohjausrakenne6.css">
+</head>
+<body>
+<header>    
+    <h1>noppapeli kumpi saa ensin 20 pistettä voittaa ja jos heität ykkösen häviät</h1>
+</header>
+<main>
+    <div class="napit1">
+    <button id="pelaaja1Nappi" onclick="noppa1()">Pelaaja 1 heitä</button>
+    <button id="ohita1Nappi" onclick="ohitaVuoro(1)">Pelaaja 1 ohita vuoro</button>
+    </div>
+    <div class="napit2">
+    <button id="pelaaja2Nappi" onclick="noppa2()">Pelaaja 2 heitä</button>
+    <button id="ohita2Nappi" onclick="ohitaVuoro(2)">Pelaaja 2 ohita vuoro</button>
+    </div>
+
+    <div class="tulokset">
+    <p id="pelaaja1"></p>
+    <p id="pelaaja2"></p>
+    </div>
+    <div class="uusiPeli">
+    <button onclick="uusiPeli()">Uusi peli</button>
+    </div>
+</main>
+<script>
+    let pelaaja1 = 0;
+    let pelaaja2 = 0;
+    let nykyinenPelaaja = 1;
+    let peliOhi = false;
+
+    function noppa1() {
+        if (nykyinenPelaaja === 1 && !peliOhi) {
+            let noppatulos1 = Math.floor(Math.random() * 6) + 1;
+            pelaaja1 += noppatulos1;
+            
+            if (noppatulos1 === 1) {
+                document.getElementById("pelaaja1").innerHTML = "Pelaaja 1 hävisi! Heitti ykkösen!";
+                peliOhi = true;
+            } else if (pelaaja1 >= 20) {
+                document.getElementById("pelaaja1").innerHTML = "Pelaaja 1 voitti! " + pelaaja1 + " pistettä!";
+                peliOhi = true;
+            } else {
+                document.getElementById("pelaaja1").innerHTML = "Pelaaja 1: " + pelaaja1;
+                nykyinenPelaaja = 2;
+                document.getElementById("pelaaja1Nappi").disabled = true;
+                document.getElementById("ohita1Nappi").disabled = true;
+                document.getElementById("pelaaja2Nappi").disabled = false;
+                document.getElementById("ohita2Nappi").disabled = false;
+            }
+        }
+    }
+    function noppa2() {
+        if (nykyinenPelaaja === 2 && !peliOhi) {
+            let noppatulos2 = Math.floor(Math.random() * 6) + 1;
+            pelaaja2 += noppatulos2;
+            
+            if (noppatulos2 === 1) {
+                document.getElementById("pelaaja2").innerHTML = "Pelaaja 2 hävisi! Heitti ykkösen!";
+                peliOhi = true;
+            } else if (pelaaja2 >= 20) {
+                document.getElementById("pelaaja2").innerHTML = "Pelaaja 2 voitti! " + pelaaja2 + " pistettä!";
+                peliOhi = true;
+            } else {
+                document.getElementById("pelaaja2").innerHTML = "Pelaaja 2: " + pelaaja2;
+                nykyinenPelaaja = 1;
+                document.getElementById("pelaaja2Nappi").disabled = true;
+                document.getElementById("ohita2Nappi").disabled = true;
+                document.getElementById("pelaaja1Nappi").disabled = false;
+                document.getElementById("ohita1Nappi").disabled = false;
+            }
+        }
+    }
+    
+    function ohitaVuoro(pelaaja) {
+        if (peliOhi) return;
+        
+        if (pelaaja === 1 && nykyinenPelaaja === 1) {
+            nykyinenPelaaja = 2;
+            document.getElementById("pelaaja1Nappi").disabled = true;
+            document.getElementById("ohita1Nappi").disabled = true;
+            document.getElementById("pelaaja2Nappi").disabled = false;
+            document.getElementById("ohita2Nappi").disabled = false;
+            document.getElementById("pelaaja1").innerHTML = "Pelaaja 1: " + pelaaja1 + " (ohitettu)";
+        } else if (pelaaja === 2 && nykyinenPelaaja === 2) {
+            nykyinenPelaaja = 1;
+            document.getElementById("pelaaja2Nappi").disabled = true;
+            document.getElementById("ohita2Nappi").disabled = true;
+            document.getElementById("pelaaja1Nappi").disabled = false;
+            document.getElementById("ohita1Nappi").disabled = false;
+            document.getElementById("pelaaja2").innerHTML = "Pelaaja 2: " + pelaaja2 + " (ohitettu)";
+        }
+    }
+    document.getElementById("pelaaja2Nappi").disabled = true;
+    document.getElementById("ohita2Nappi").disabled = true;
+    
+    function uusiPeli() {
+        pelaaja1 = 0;
+        pelaaja2 = 0;
+        nykyinenPelaaja = 1;
+        peliOhi = false;
+        document.getElementById("pelaaja1").innerHTML = "";
+        document.getElementById("pelaaja2").innerHTML = "";
+        document.getElementById("pelaaja1Nappi").disabled = false;
+        document.getElementById("ohita1Nappi").disabled = false;
+        document.getElementById("pelaaja2Nappi").disabled = true;
+        document.getElementById("ohita2Nappi").disabled = true;
+    }
+</script>
+</body>
+</html>
